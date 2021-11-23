@@ -1,9 +1,7 @@
 import express from 'express'
 
 
-
 import { UserController } from '../controllers/user.controller';
-
 import { createReqUser, loginReq } from '../types/Requests/user.requests';
 import { UserResponse } from '../types/Responses/user.responses';
 import jwt from 'jsonwebtoken';
@@ -16,10 +14,6 @@ import { ApplicationResponse } from '../types/Responses/application.responses';
 import { USER } from './../types/document/user.document';
 import { GROUP } from './../types/document/group.document';
 import { APPLICATION } from '../types/document/createApplication.document';
-
-
-
-
 
 export class UserRoutes {
     router: express.Router;
@@ -70,7 +64,7 @@ export class UserRoutes {
         // using jwt middleware here so we must send token
         // first login get token then send for this endpoint
 
-        this.router.post('/createGroup',authenticateToken, async (req, res, next) => {
+        this.router.post('/createGroup', authenticateToken, async (req, res, next) => {
             try {
                 const getreq: createGroupReq = req.body;
                 const group: GroupResponse = await new UserController().createGroup(getreq);
@@ -87,9 +81,9 @@ export class UserRoutes {
 
         // creating a new application 
         // using jwt middleware in this route too
-       
 
-        this.router.post('/createApplication',authenticateToken, async (req, res, next) => {
+
+        this.router.post('/createApplication', authenticateToken, async (req, res, next) => {
             try {
                 const getreq: createApplicationReq = req.body;
                 const application: ApplicationResponse = await new UserController().createApplication(getreq);
@@ -105,10 +99,10 @@ export class UserRoutes {
         });
 
         // delete a user
-        this.router.delete('/deleteUser/:id',authenticateToken,async(req,res,next)=>{
+        this.router.delete('/deleteUser/:id', authenticateToken, async (req, res, next) => {
             try {
                 const id = req.params.id;
-                const user: USER |any= await new UserController().deleteUser(id);
+                const user: USER | any = await new UserController().deleteUser(id);
 
                 user.password = undefined;
                 res.status(201).json({
@@ -120,11 +114,11 @@ export class UserRoutes {
             }
         });
 
-         // delete a group
-         this.router.delete('/deleteGroup/:id',authenticateToken,async(req,res,next)=>{
+        // delete a group
+        this.router.delete('/deleteGroup/:id', authenticateToken, async (req, res, next) => {
             try {
                 const id = req.params.id;
-                const group: GROUP |any= await new UserController().deleteGroup(id);
+                const group: GROUP | any = await new UserController().deleteGroup(id);
 
                 res.status(200).json({
                     msg: ' group has been deleted',
@@ -136,10 +130,10 @@ export class UserRoutes {
         });
 
         // get all groups
-        this.router.get('/getAllGroups',async(req,res,next)=>{
+        this.router.get('/getAllGroups', async (req, res, next) => {
             try {
-               
-                const groups: GROUP |any= await new UserController().getAllGroups();
+
+                const groups: GROUP | any = await new UserController().getAllGroups();
 
                 res.status(200).json({
                     msg: ' All groups',
@@ -151,10 +145,10 @@ export class UserRoutes {
         });
 
         // get all applications
-        this.router.get('/getAllApplications',async(req,res,next)=>{
+        this.router.get('/getAllApplications', async (req, res, next) => {
             try {
-               
-                const apps: APPLICATION |any= await new UserController().getAllApplications();
+
+                const apps: APPLICATION | any = await new UserController().getAllApplications();
 
                 res.status(200).json({
                     msg: ' All application',

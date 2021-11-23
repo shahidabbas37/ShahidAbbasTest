@@ -1,7 +1,4 @@
 import { Document } from "mongoose";
-
-
-
 export interface ApplicationResponse extends Document {
     _id: string;
     name: string;

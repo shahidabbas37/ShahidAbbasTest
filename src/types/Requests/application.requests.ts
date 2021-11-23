@@ -1,7 +1,3 @@
-import { Document } from "mongoose";
-
-
-
 export interface createApplicationReq  {
     name: string;
     creatorId:string;

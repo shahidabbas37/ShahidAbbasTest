@@ -9,9 +9,9 @@ export class MainApplication {
         return new applicationSchema(application).save();
     };
 
-    getAllApplication(){
-     
-        return  applicationSchema.find().populate('creatorId', 'email');  
+    getAllApplication() {
+
+        return applicationSchema.find().populate('creatorId', 'email');
     }
 
 }

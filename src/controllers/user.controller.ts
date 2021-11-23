@@ -81,48 +81,48 @@ export class UserController {
         return <ApplicationResponse>application;
     }
 
-     // delete a user 
+    // delete a user 
     // apply jwt on this endpoint so only authenic user can create application
     @Security("bearerAuth")
     @Delete('/deleteUser/:id')
-    async deleteUser(id:string): Promise<UserResponse> {
+    async deleteUser(id: string): Promise<UserResponse> {
 
         // check for user 
         const user = await new MainUser().getUserById(id);
         if (!user) throw new ErrorHandler(404, ' no user exist with this id');
 
-        let deletedUser:USER | any = await new MainUser().deleteUser(id);
+        let deletedUser: USER | any = await new MainUser().deleteUser(id);
 
         return <UserResponse>deletedUser;
     }
 
-      // delete a group 
+    // delete a group 
     // apply jwt on this endpoint so only authenic user can create application
     @Security("bearerAuth")
     @Delete('/deleteGroup/:id')
-    async deleteGroup(id:string): Promise<GroupResponse> {
+    async deleteGroup(id: string): Promise<GroupResponse> {
 
         // check for user 
         const group = await new MainGroup().getGroupById(id);
         if (!group) throw new ErrorHandler(404, ' no group exist with this id');
 
-        let deletedGroup:GROUP | any = await new MainGroup().deleteGroup(id);
+        let deletedGroup: GROUP | any = await new MainGroup().deleteGroup(id);
 
         return <GroupResponse>deletedGroup;
     }
 
     @Get('/getAllGroups')
-    async getAllGroups():Promise<GroupResponse>{
-        const groups:GROUP | any = await new MainGroup().getAllGroups();
-        if(!groups) throw new ErrorHandler(404,'no group exist');
-        return <GroupResponse> groups;
+    async getAllGroups(): Promise<GroupResponse> {
+        const groups: GROUP | any = await new MainGroup().getAllGroups();
+        if (!groups) throw new ErrorHandler(404, 'no group exist');
+        return <GroupResponse>groups;
     }
 
     @Get('/getAllApplications')
-    async getAllApplications():Promise<ApplicationResponse>{
-        const apps:APPLICATION | any = await new MainApplication().getAllApplication();
-        if(!apps) throw new ErrorHandler(404,'no applications exist');
-        return <ApplicationResponse> apps;
+    async getAllApplications(): Promise<ApplicationResponse> {
+        const apps: APPLICATION | any = await new MainApplication().getAllApplication();
+        if (!apps) throw new ErrorHandler(404, 'no applications exist');
+        return <ApplicationResponse>apps;
     }
 
 }

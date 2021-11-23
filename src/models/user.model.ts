@@ -2,8 +2,6 @@ import { Schema, model } from "mongoose";
 import bcrypt from 'bcrypt';
 import { USER } from '../types/document/user.document';
 
-
-
 const UserSchema = new Schema(
     {
         email:

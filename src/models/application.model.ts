@@ -1,11 +1,9 @@
 import { Schema, model } from "mongoose";
 import { APPLICATION } from './../types/document/createApplication.document';
 
-
-
 const ApplicationSchema = new Schema(
     {
-        name :{type:String, required:true},
+        name: { type: String, required: true },
         creatorId: { type: Schema.Types.ObjectId, ref: "users", required: true },
         subnet: { type: String, required: true },
         roles: { type: Array, default: [] },

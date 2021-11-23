@@ -6,7 +6,7 @@ export class DbMongo {
     let connectionuri = `mongodb://${h}:${p}/${dbName}`;
     let h1 = "shahid.coszq.mongodb.net";
     if (u != undefined && pass != undefined) {
-      
+
       connectionuri = `mongodb+srv://${u}:${pass}@${h1}/${dbName}`;
     }
     connect(connectionuri, (err: any) => {

@@ -1,7 +1,5 @@
 import { Document } from "mongoose";
 
-
-
 export interface APPLICATION extends Document {
     _id: string;
     creatorId:string;
