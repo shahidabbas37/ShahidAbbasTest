@@ -44,7 +44,7 @@ export class UserController {
         if (!user) throw new ErrorHandler(404, 'no user with this email.');
         // validate the password 
         const validate = await user.comparePassword(req.password);
-        if (!validate) throw new ErrorHandler(404, ' either email or password is wrong');
+        if (!validate) throw new ErrorHandler(400, ' either email or password is wrong');
 
         user.password = undefined;
         return <UserResponse>user;

@@ -47,7 +47,7 @@ export class UserRoutes {
                     expiresIn: 60 * 60
                 });
 
-                res.status(201).json({
+                res.status(200).json({
                     msg: ' user has been logedIn',
                     user: user,
                     token: token
@@ -105,7 +105,7 @@ export class UserRoutes {
                 const user: USER | any = await new UserController().deleteUser(id);
 
                 user.password = undefined;
-                res.status(201).json({
+                res.status(200).json({
                     msg: ' user has been deleted',
                     user: user
                 })

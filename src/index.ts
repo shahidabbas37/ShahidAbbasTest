@@ -49,7 +49,7 @@ function initApplication(): express.Application {
     app.use('/health', health.LivenessEndpoint(healthcheck));
     app.use('/ready', health.ReadinessEndpoint(healthcheck));
     app.use("*", async (req, res, next) => {
-        res.send(new ErrorHandler(500, 'Bad Request internal server error'));
+        res.send(new ErrorHandler(400, 'Bad Request internal server error'));
     });
 
 
